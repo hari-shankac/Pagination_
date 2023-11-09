@@ -12,10 +12,11 @@ namespace PaginationMVc_Core.Controllers
         {
             _logger = logger;
         }
-
-        public IActionResult Index()
+        private AllEmployee emp = new AllEmployee();
+        public async Task<IActionResult> Index(int filter = 1)
         {
-            return View();
+            var result = await emp.GetAllEmployee(filter);
+            return View(result);
         }
 
         public IActionResult Privacy()
